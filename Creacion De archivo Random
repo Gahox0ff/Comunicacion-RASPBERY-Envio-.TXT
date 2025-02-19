@@ -1,9 +1,13 @@
-def comparar_archivos(D1, Datos_Recibidos):
-    with open(D1, 'r') as f1, open(Datos_Recibidos, 'r') as f2:
-        contenido1 = f1.read()
-        contenido2 = f2.read()
-        errores = sum(1 for a, b in zip(contenido1, contenido2) if a != b)
-        errores += abs(len(contenido1) - len(contenido2))
-        print(f"Errores (caracteres diferentes): {errores}")
+import random
+import string
 
-comparar_archivos('D1.txt', 'Datos_Recibidos.txt')
+# Caracteres permitidos
+caracteres = string.ascii_letters + string.digits + string.punctuation
+
+# Crear archivo con 100 líneas de 60 caracteres aleatorios
+with open('DATOS_RANDOM1.txt', 'w') as archivo:
+    for _ in range(100):
+        linea = ''.join(random.choice(caracteres) for _ in range(60))
+        archivo.write(linea + '\n')
+
+print("Archivo 'DATOS_RANDOM.txt' creado con éxito.")
